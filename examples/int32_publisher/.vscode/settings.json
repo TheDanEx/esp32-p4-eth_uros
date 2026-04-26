@@ -1,0 +1,4 @@
+{
+  "idf.currentSetup": "C:\\Users\\DanEx\\esp\\v5.5.2\\esp-idf",
+  "idf.openOcdConfigs": ["board/esp32p4-ftdi.cfg"]
+}
