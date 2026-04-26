@@ -5,37 +5,46 @@ Este documento detalla los pasos para compilar, flashear y ejecutar el proyecto 
 
 ## Entorno y Dependencias
 - Raspberry Pi 5 conectada vía USB (para flash) y Ethernet (para ROS).
-- ESP-IDF v5.5 instalado en la Pi 5.
+- ESP-IDF v5.4 (Estable) instalado en la Pi 5.
 - Docker instalado en la Pi 5 para el Agente.
 
 ## Interfaces de E/S (Inputs/Outputs)
 - **Serial Port:** `/dev/ttyACM0` (ESP32-P4).
 - **Network Interface:** `eth0` (IP 192.168.5.1).
 
-## Flujo de Ejecución Lógico
-1. **Compilación:** Uso del sistema `idf.py` en la Raspberry Pi 5.
-2. **Flash:** Despliegue mediante el script `pi5_rebuild_flash.py`.
-3. **Agente:** Inicio del contenedor Docker de micro-ROS.
+## Ejemplos Disponibles
 
-## Funciones Principales y Parámetros
-### Comandos de Compilación:
+### 1. Telemetría Base (`esp_p4_telemetry`)
+Ejemplo ligero que envía el tiempo del sistema cada 2 segundos. Ideal para verificar conectividad básica.
 ```bash
+cd examples/esp_p4_telemetry
 idf.py build
+idf.py flash
 ```
 
-### Comandos de Despliegue (desde la Pi 5):
+### 2. Sincronización y Diagnóstico (`esp_p4_ptp_telemetry`)
+Ejemplo avanzado que sincroniza el reloj del ESP32 con la Pi 5 y mide el rendimiento de red.
 ```bash
-# Reiniciar el agente
-sudo docker run -d --name uros_agent --net=host microros/micro-ros-agent:humble udp4 --port 8888
+cd examples/esp_p4_ptp_telemetry
+idf.py build
+idf.py flash
+```
+**Métricas en tiempo real:**
+- **Latency:** Tiempo de viaje de ida y vuelta (RTT/2).
+- **Offset:** Desfase temporal respecto a la Pi 5 (precisión microsegundos).
+- **Jitter:** Estabilidad y varianza de la red Ethernet.
+
+## Comandos de Verificación (desde la Pi 5)
+
+Para ver el diagnóstico avanzado:
+```bash
+sudo docker run -it --rm --net=host ros:humble-ros-base ros2 topic echo /microROS/esp_diag_time
 ```
 
 ## Puntos Críticos y Depuración
 - **IP Estática:** Asegúrate de que la interfaz Ethernet de la Pi 5 tenga la IP `192.168.5.1/24`.
-- **Logs:** Si la conexión falla, verifica los logs del agente con `docker logs uros_agent`.
+- **Sincronización:** El nodo de diagnóstico requiere unos segundos tras el arranque para estabilizar el Offset.
 - **Reset:** El ESP32-P4 puede requerir un reset físico si el puerto USB-ACM se bloquea tras un fallo de red.
 
-## Ejemplo de Uso e Instanciación
-Para visualizar el timestamp del ESP desde la Pi 5:
-```bash
-ros2 topic echo /microROS/esp_time
-```
+---
+*Desarrollado para sistemas robóticos de alta precisión.*

@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/CMakeFiles/bootloader
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/CMakeFiles/bootloader.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/CMakeFiles/bootloader-complete.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

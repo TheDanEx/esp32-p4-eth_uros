@@ -1,0 +1,1 @@
+info: Trying to set symbol COMPILER_ORPHAN_SECTIONS_WARNING to n, but it is currently selected by choice COMPILER_ORPHAN_SECTIONS. For setting it to n, set another choice symbol to y instead.

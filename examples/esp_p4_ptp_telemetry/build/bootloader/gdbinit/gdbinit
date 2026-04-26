@@ -1,0 +1,2 @@
+source /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader/gdbinit/symbols
+source /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader/gdbinit/connect

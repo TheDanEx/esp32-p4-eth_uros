@@ -1,0 +1,19 @@
+[0/2] Re-checking globbed directories...
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader/esp-idf/esptool_py && /home/pi5/.espressif/python_env/idf5.4_py3.11_env/bin/python /home/pi5/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/bootloader/bootloader.bin
+Bootloader binary size 0x5890 bytes. 0x770 bytes (8%) free.
+[2/10] No install step for 'bootloader'
+[3/10] Completed 'bootloader'
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating ld/sections.ld
+[7/10] Building C object CMakeFiles/ping_pong.elf.dir/project_elf_src_esp32p4.c.obj
+[8/10] Linking CXX executable ping_pong.elf
+[9/10] Generating binary image from built executable
+esptool.py v4.11.0
+Creating esp32p4 image...
+Merged 3 ELF sections
+Successfully created esp32p4 image.
+Generated /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/ping_pong.bin
+[10/10] cd /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/esp-idf/esptool_py && /home/pi5/.espressif/python_env/idf5.4_py3.11_env/bin/python /home/pi5/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/partition_table/partition-table.bin /home/pi5/micro_ros_espidf_component/examples/esp_p4_ptp_telemetry/build/ping_pong.bin
+ping_pong.bin binary size 0x7b490 bytes. Smallest app partition is 0x100000 bytes. 0x84b70 bytes (52%) free.

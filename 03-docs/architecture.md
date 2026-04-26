@@ -13,7 +13,7 @@ Este proyecto implementa una capa de transporte de alta velocidad para ROS 2 sob
 ## Interfaces de E/S (Inputs/Outputs)
 ### Publicaciones (Outputs):
 - `/microROS/ping` (`std_msgs/msg/Header`): Latencia y sincronización.
-- `/microROS/esp_time` (`std_msgs/msg/Int64`): Timestamp de alta precisión (`esp_timer_get_time()`).
+- `/microROS/esp_time` (`std_msgs/msg/String`): Timestamp de alta precisión (`esp_timer_get_time()`) cada 2 segundos.
 - `/microROS/pong` (`std_msgs/msg/Header`): Respuesta a subscripciones.
 
 ### Subscripciones (Inputs):
@@ -22,11 +22,11 @@ Este proyecto implementa una capa de transporte de alta velocidad para ROS 2 sob
 
 ## Flujo de Ejecución Lógico
 1. **HW Reset:** Ciclo de reset físico del PHY Ethernet (GPIO 51).
-2. **Netif Init:** Inicialización del stack TCP/IP (LwIP) con IP estática.
-3. **uROS Transport:** Configuración del transporte UDP hacia el Agente.
-4. **XRCE Session:** Negociación de sesión con el Agente micro-ROS.
-5. **Entity Creation:** Registro de nodos, tópicos, publishers y suscriptores.
-6. **Main Loop:** Ejecución del `rclc_executor` para gestionar eventos asíncronos.
+2. **Netif Init:** Inicialización del stack TCP/IP (LwIP).
+3. **Connection Loop:** Bucle infinito que intenta establecer sesión con el Agente.
+4. **Entity Creation:** Registro de nodos y tópicos (Reliable para Telemetría).
+5. **Main Loop:** Ejecución del `rclc_executor` con detección de errores.
+6. **Auto-Recovery:** Si la conexión se pierde, destruye entidades y vuelve al paso 3.
 
 ## Funciones Principales y Parámetros
 - `uros_network_interface_initialize()`: Configura el MAC y PHY específicos del P4.
@@ -42,6 +42,6 @@ Este proyecto implementa una capa de transporte de alta velocidad para ROS 2 sob
 ```c
 void app_main(void) {
     ESP_ERROR_CHECK(uros_network_interface_initialize());
-    xTaskCreate(micro_ros_task, "uros_task", 8192, NULL, 5, NULL);
+    xTaskCreate(micro_ros_task, "uros_task", 16384, NULL, 5, NULL);
 }
 ```

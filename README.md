@@ -10,7 +10,7 @@ Este repositorio contiene un componente de **micro-ROS** altamente optimizado pa
 
 ## 📁 Estructura del Proyecto
 - `micro_ros_espidf_component/`: El componente principal para integrar en ESP-IDF.
-- `examples/ping_pong/`: Aplicación de ejemplo funcional con telemetría de tiempo.
+- `examples/esp_p4_telemetry/`: Aplicación de ejemplo funcional con telemetría de tiempo cada 2s.
 - `03-docs/`: Documentación técnica detallada (Arquitectura, Uso, Integración).
 
 ## 🛠️ Inicio Rápido
